@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   
   scope module: :public do
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy,]
- end
+  end
+  scope module: :public do
+    get 'customers/mypage' => 'customers#show'
+    get 'customers/mypage/edit' => 'customers#edit'
+    get 'customers/mypage' => 'customers#update'
+  end
 
   
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
