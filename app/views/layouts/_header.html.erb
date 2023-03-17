@@ -36,7 +36,7 @@
                 <h4 class="nav-link text-dark border rounded btn mr-3">ジャンル一覧</h4>
               </li>
               <li class="nav-item">
-                <h4 class="nav-link text-dark border rounded btn">ログアウト</h4>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-dark border rounded btn" %>
               </li>
             <% else %>
               <li class = "nav-item">
