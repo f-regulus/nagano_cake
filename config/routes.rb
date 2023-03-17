@@ -4,10 +4,17 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  get 'about' => "homes#about"
+  
+  scope module: :public do
+    resources :deliveries, only: [:index, :edit, :create, :update, :destroy,]
+ end
+
   
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
