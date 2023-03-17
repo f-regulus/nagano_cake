@@ -1,0 +1,35 @@
+<header>
+  <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class = "container">
+      <ul>
+        <% if customer_signed_in? %>
+          <li>
+            <h4>マイページ</h4>
+          </li>
+          <li>
+            <h4>商品一覧</h4>
+          </li>
+          <li>
+            <h4>カート</h4>
+          </li>
+          <li>
+            <h4>ログアウト</h4>
+          </li>
+        <% else %>
+          <li>
+            <h4>About</h4>
+          </li>
+          <li>
+            <h4>商品一覧</h4>
+          </li>
+          <li>
+            <h4>新規登録</h4>
+          </li>
+          <li>
+            <h4>ログイン</h4>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
