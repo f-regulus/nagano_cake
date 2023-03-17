@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get 'items/new'
+    get 'items/index'
+    get 'items/show'
+    get 'items/edit'
+
     get 'customers/index'
     get 'customers/show'
     get 'customers/edit'
     get 'customers/update'
+    
   end
   namespace :admin do
     get 'homes/top'
@@ -30,7 +36,8 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    root "homes#top"
+    root to: "homes#top"
+    resources :items
   end
 
 
