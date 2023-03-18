@@ -1,6 +1,6 @@
 <div class="container">
   <h2>商品一覧</h2>
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>商品ID</th>
@@ -17,7 +17,11 @@
         <td><%= item.name %></td>
         <td><%= item.price %></td>
         <td><%= item.genre.genre_name %></td>
-        <td><%= item.is_active %></td>
+        <% if item.is_active == false %>
+          <td>販売中</td>
+        <% else item.is_active == true %>
+          <td>販売停止中</td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
