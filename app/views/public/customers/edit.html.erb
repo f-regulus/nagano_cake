@@ -1,0 +1,10 @@
+<%= form_with model: @customer do |f| %>
+  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name %>
+  <%= f.text_field :kana_first_name %>
+  <%= f.text_field :kana_last_name %>
+  <%= f.text_field :postal_code %>
+  <%= f.text_field :address %>
+  <%= f.text_field :telephone_number %>
+  <%= f.text_field :email %>
+<% end %>
