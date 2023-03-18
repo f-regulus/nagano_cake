@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'customers/show'
     get 'customers/edit'
     get 'customers/update'
-    
+
   end
   namespace :admin do
     get 'homes/top'
@@ -29,7 +29,9 @@ Rails.application.routes.draw do
     get 'customers/mypage/edit' => 'customers#edit'
     get 'customers/mypage' => 'customers#update'
   end
-
+  scope module: :public do
+    resources :items, only: [:index, :show]
+  end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"

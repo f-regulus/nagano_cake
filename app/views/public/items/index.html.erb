@@ -1,1 +1,21 @@
-<h1>item index</h1>
+<h2>商品一覧</h2>
+
+<table>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td>
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.image, size: '200x100' %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= item.name %></td>
+      </tr>
+      <tr>
+        <td>￥<%= item.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
