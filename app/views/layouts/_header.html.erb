@@ -24,6 +24,12 @@
               <li class = "nav-item">
                 <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-dark border rounded btn' %>
               </li>
+              <form method="get" action="" target="_blank">
+              <input type="text" name="q" size="31" maxlength="255" value="" placeholder="検索キーワードを入力してください">
+              <input type="submit" name="btng" value="検索">
+              </form>
+
+
             <% elsif admin_signed_in? %>
               <li class="nav-item">
                 <%= link_to '商品一覧', admin_items_path, class: "nav-link text-dark border rounded btn mr-3" %>
@@ -40,6 +46,11 @@
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-dark border rounded btn" %>
               </li>
+              <form method="get" action="" target="_blank">
+              <input type="text" name="q" size="31" maxlength="255" value="" placeholder="検索キーワードを入力してください">
+              <input type="submit" name="btng" value="検索">
+              </form>
+
             <% else %>
               <li class = "nav-item">
                 <%= link_to 'About', about_path, class: 'nav-link text-dark border rounded btn mr-3' %>
@@ -53,6 +64,11 @@
               <li class = "nav-item">
                 <%= link_to 'ログイン', new_customer_session_path, class: 'nav-link text-dark border rounded btn' %>
               </li>
+              <form method="get" action="" target="_blank">
+              <input type="text" name="q" size="31" maxlength="255" value="" placeholder="検索キーワードを入力してください">
+              <input type="submit" name="btng" value="検索">
+              </form>
+
             <% end %>
           </ul>
         </div>

@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
+   resources :customers, only: [:index,:show,:edit,:update]
   end
+
   root to: 'homes#top'
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
