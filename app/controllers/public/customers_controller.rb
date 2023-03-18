@@ -4,6 +4,6 @@ class Public::CustomersController < ApplicationController
   end
   
   def edit
-    @customer = current_customer
+    @customer = current.customer
   end
 end
