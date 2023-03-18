@@ -1,4 +1,4 @@
-<%= form_with model: @customer do |f| %>
+<%= form_with model: @customer, url: customers_mypage_path do |f| %>
   <%= f.text_field :first_name %>
   <%= f.text_field :last_name %>
   <%= f.text_field :kana_first_name %>
