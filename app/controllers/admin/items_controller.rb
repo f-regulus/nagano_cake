@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_item, only: [:show, :edit]
+  before_action :set_item, only: [:show, :edit, :update]
   
   def new
     @item = Item.new
@@ -26,7 +26,6 @@ class Admin::ItemsController < ApplicationController
   end
   
   def update
-    @item = Item.find(params[:id])
     @item.update(item_params)
     redirect_to admin_item_path(@item)
   end

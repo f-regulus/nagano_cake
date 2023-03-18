@@ -9,7 +9,8 @@ class Public::DeliveriesController < ApplicationController
 
   def create
     @delivery = Delivery.new(delivery_params)
-    if @delivery.save
+    @delivery.customer_id = current_customer.id
+    if @delivery.save!
       flash[:notice] = "Book was successfully created."
       redirect_to deliveries_path
     else

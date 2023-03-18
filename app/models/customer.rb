@@ -6,7 +6,15 @@ class Customer < ApplicationRecord
 
   has_many :delivery, dependent: :destroy
 
- def full_name
+<<<<<<< HEAD
+
+=======
+  # 退会機能　is_deletedがfalseならtrueを返すようにしている
+  #def active_for_authentication?
+    #super && (is_deleted == false)
+  #end
+
+   def full_name
     self.last_name + " " + self.first_name
  end
 
@@ -15,3 +23,6 @@ class Customer < ApplicationRecord
  end
 
 end
+
+end
+>>>>>>> origin/develop
