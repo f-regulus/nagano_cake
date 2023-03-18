@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
   def show
-    @customer = current_user
+    @customer = Customer.all
   end
 end
