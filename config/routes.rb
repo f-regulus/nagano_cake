@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'customers/mypage' => 'customers#show'
     get 'customers/mypage/edit' => 'customers#edit'
-    get 'customers/mypage' => 'customers#update'
+    patch 'customers/mypage' => 'customers#update'
   end
 
 
