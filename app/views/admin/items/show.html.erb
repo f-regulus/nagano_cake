@@ -5,5 +5,11 @@
   <p><small>商品説明</small><%= @item.introduction %></p>
   <p><small>ジャンル</small><%= @item.genre.genre_name %></p>
   <p><small>税込価格（税抜き価格）</small><%= @item.price %></p>
-  <p><small>販売ステータス</small><%= @item.is_active %></p>
+  <p><small>販売ステータス</small>
+  <% if @item.is_active == false %>
+    <small>販売中</small>
+  <% else @item.is_active == true %>
+    <small>販売停止中</small>
+  <% end %>
+  </p>
 </div>
