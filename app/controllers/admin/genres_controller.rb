@@ -3,12 +3,13 @@ class Admin::GenresController < ApplicationController
   
   
   def index
-    @order = Order.new
+    @genre = Genre.new
+    @genres = Genre.all
   end
   
   def create
-    @order = Order.new(order_params)
-    @order.save
+    @genre = Genre.new(order_params)
+    @genre.save
     redirect_to admin_genres_path
   end
 
@@ -19,7 +20,9 @@ class Admin::GenresController < ApplicationController
   end
   
   private
+  
   def order_params
     params.require(:genre).permit(:genre_name)
   end
+  
 end
