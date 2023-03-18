@@ -4,10 +4,6 @@ Rails.application.routes.draw do
     get 'customers/show'
     get 'customers/edit'
     get 'customers/update'
-    
-  end
-  namespace :admin do
-    get 'homes/top'
   end
   root to: 'homes#top'
   devise_for :customers, skip: [:passwords], controllers: {
