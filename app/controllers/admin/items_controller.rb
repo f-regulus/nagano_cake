@@ -1,5 +1,7 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_item, only: [:show, :edit, :update]
+  
   def new
     @item = Item.new
   end
