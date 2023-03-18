@@ -4,7 +4,6 @@ class Item < ApplicationRecord
     validates :introduction
     validates :price
     validates :genre_id
-    validates :is_active
   end
   
   belongs_to :genre
