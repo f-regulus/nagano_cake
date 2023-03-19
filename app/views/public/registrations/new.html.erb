@@ -1,67 +1,91 @@
 <div class="container">
   <div class="col-md-8 mx-auto mt-4">
-    <h3 class="bg-light">新規会員登録</h3>
+    <h3 class="h4 text-center w-25 bg-light">新規会員登録</h3>
   </div>
 
-  <div class="row mt-4">
+  <div class="row mt-5">
     <div class="col-md-10 mx-auto">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
 
         <div class="form-group row">
-          <%= f.label :first_name, '名前' %>
-          <div class="col">
+          <%= f.label :first_name, '名前', class: "col", style: "height: 38px; line-height: 38px;" %>
+          <div class="col-sm-1 text-right" style="height: 38px; line-height: 38px">
+            <%= f.label :fist_name, '(姓)' %>
+          </div>
+          <div class="float-left col-sm-4">
             <%= f.text_field :first_name, autofocus: true, placeholder: "令和", class: "form-control" %>
           </div>
-          <div class="col">
+          <div class="col-sm-1 text-right" style="height:38px; line-height:38px;">
+            <%= f.label :last_name, '(名)' %>
+          </div>
+          <div class="float-left col-sm-4">
             <%= f.text_field :last_name, placeholder: "道子", class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :kana_first_name, 'フリガナ' %>
-          <div class="col">
+          <%= f.label :kana_first_name, 'フリガナ',class: "col", style: "height: 38px; line-height: 38px;" %>
+          <div class="col-sm-1 text-right"  style="height: 38px; line-height: 38px">
+            <%= f.label :kana_fist_name, '(セイ)' %>
+          </div>
+          <div class="col-sm-4">
             <%= f.text_field :kana_first_name, placeholder: "レイワ", class: "form-control" %>
           </div>
-          <div class="col">
+          <div class="col-sm-1 text-right" style="height:38px; line-height:38px;">
+            <%= f.label :kana_last_name, '(メイ)' %>
+          </div>
+          <div class="col-sm-4">
             <%= f.text_field :kana_last_name, placeholder: "ミチコ", class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :email, 'メールアドレス' %>
-          <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+          <%= f.label :email, 'メールアドレス', class: "col", style: "height: 38px; line-height: 38px;" %>
+          <div class="col-sm-9">
+            <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+          </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :postal_code, '郵便番号(ハイフンなし)' %>
-          <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control" %>
+          <%= f.label :postal_code, '郵便番号(ハイフンなし)', class: "col", style: "height: 38px; line-height: 38px;" %>
+          <div class="col-sm-9">
+            <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control" %>
+          </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :address, '住所' %>
-          <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control" %>
+          <%= f.label :address, '住所', class: "col", style: "height: 38px; line-height: 38px;" %>
+          <div class="col-sm-9">
+            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control" %>
+          </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :telephone_number, '電話番号' %>
-          <%= f.text_field :telephone_number, placeholder: "00000000000", class: "form-control" %>
+          <%= f.label :telephone_number, '電話番号', class: "col", style: "height: 38px; line-height: 38px;" %>
+          <div class="col-sm-9">
+            <%= f.text_field :telephone_number, placeholder: "00000000000", class: "form-control" %>
+          </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :password, 'パスワード' %>
+          <%= f.label :password, 'パスワード', class: "col", style: "height: 38px; line-height: 38px;" %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %>文字以上)</em>
+          <em class="d-inline-block", style="height: 38px; line-height: 38px;">(<%= @minimum_password_length %>文字以上)</em>
           <% end %>
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          <div class="col-sm-9">
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :password_confirmation, 'パスワード(確認用)' %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          <%= f.label :password_confirmation, 'パスワード(確認用)', class: "col", style: "height: 38px; line-height: 38px;" %>
+          <div class="col-sm-9">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
         </div>
 
-        <div class="actions">
+        <div class="actions text-center">
           <%= f.submit "新規登録", class: "btn btn-success" %>
         </div>
       <% end %>
