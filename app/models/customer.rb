@@ -11,13 +11,12 @@ class Customer < ApplicationRecord
     #super && (is_deleted == false)
   #end
 
-   def full_name
+  def full_name
     self.last_name + " " + self.first_name
- end
+  end
 
- def kana_full_name
+  def kana_full_name
     self.kana_last_name + " " + self.kana_first_name
- end
+  end
 
 end
-
