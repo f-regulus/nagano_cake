@@ -14,12 +14,15 @@ Rails.application.routes.draw do
   get 'about' => "homes#about"
 
   scope module: :public do
-    resources :deliveries, only: [:index, :edit, :create, :update, :destroy,]
     get 'customers/mypage' => 'customers#show'
     get 'customers/mypage/edit' => 'customers#edit'
     patch 'customers/mypage' => 'customers#update'
     get 'customers/unsubscribe'
     patch 'customers/withdrawal'
+    resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :index, :show, :create, :confirm, :success]
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/success' => 'orders#success'
   end
 
   scope module: :public do

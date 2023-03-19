@@ -16,7 +16,7 @@
                 <% end %>
               </li>
               <li class = "nav-item">
-                <h4 class = "nav-link text-dark border rounded btn mr-3">商品一覧</h4>
+                <%= link_to '商品一覧', items_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
                 <h4 class = "nav-link text-dark border rounded btn mr-3">カート</h4>
@@ -41,7 +41,7 @@
                 <h4 class="nav-link text-dark border rounded btn mr-3">注文履歴一覧</h4>
               </li>
               <li class="nav-item">
-                <h4 class="nav-link text-dark border rounded btn mr-3">ジャンル一覧</h4>
+                <%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class="nav-item">
                 <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-dark border rounded btn" %>
@@ -53,10 +53,10 @@
 
             <% else %>
               <li class = "nav-item">
-                <%= link_to 'About', about_path, class: 'nav-link text-dark border rounded btn mr-3' %>
+                <%= link_to 'About', about_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
-                <h4 class = "nav-link text-dark border rounded btn mr-3">商品一覧</h4>
+                <%= link_to '商品一覧', items_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
                 <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark border rounded btn mr-3' %>
