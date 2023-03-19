@@ -1,29 +1,35 @@
 <div class="container">
-  <div class="row">
     <div class="col-md-8 mx-auto mt-4">
       <h2 class="h4 font-weight-normal"><mark class="bg-light">管理者ログイン</mark></h2>
     </div>
-  </div>
     
-      <div class="row d-flex justify-content-center">
+    <div class="row mt-4">
+      <div class="col-md-8 mx-auto">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="form-inline">
-              <%= f.label :email, 'メールアドレス', class: "w-50" %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-50" %>
-            </div>
-        
-          <div class="form-inline">
-            <%= f.label :password, 'パスワード', class: "w-50" %>
-            <%= f.password_field :password, autocomplete: "current-password", class: "w-50"%>
+          <div class="form-inline pb-2">
+            <dt class="col-md-4 font-weight-normal">
+              <%= f.label :email, 'メールアドレス' %>
+            </dt>
+            <dd class="col-md-8">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </dd>
           </div>
-        
-          <div class="actions text-center">
-            <%= f.submit "Log in",class: "btn btn-primary" %>
-          </div>
-        <% end %>
-        
-        <%= render "admin/shared/links" %>
-      </div>
+
+        <div class="form-inline pb-4">
+          <dt class="col-md-4 font-weight-normal">
+            <%= f.label :password, 'パスワード' %>
+          </dt>
+          <dd class="col-md-8">
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </dd>
+        </div>
+
+        <div class="actions col-md-4 mx-auto">
+          <%= f.submit "Log in",class: "btn btn-primary w-50" %>
+        </div>
+      <% end %>
       
-  </div>
+      <%= render "admin/shared/links" %>
+      </div>
+    </div>
 </div>
