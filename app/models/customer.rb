@@ -12,11 +12,11 @@ class Customer < ApplicationRecord
   #end
 
   def full_name
-    self.last_name + " " + self.first_name
+    self.first_name + " " + self.last_name
   end
 
   def kana_full_name
-    self.kana_last_name + " " + self.kana_first_name
+    self.kana_first_name + " " + self.kana_last_name
   end
 
 end

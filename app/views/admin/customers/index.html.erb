@@ -3,6 +3,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="row"></th>
       <th scope="col">会員ID</th>
       <th scope="col">氏名</th>
       <th scope="col">メールアドレス</th>
@@ -14,7 +15,7 @@
     <tr>
       <th scope="row"></th>
       <td><%= customer.id %></td>
-      <td><%= customer.full_name %></td>
+      <td><%= link_to customer.full_name,admin_customer_path(customer) %></td>
       <td><%= customer.email %></td>
       <td><%= customer.is_deleted %></td>
     </tr>
