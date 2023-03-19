@@ -3,6 +3,7 @@ class Item < ApplicationRecord
     validates :name
     validates :introduction
     validates :price
+    validates :image
     validates :genre_id
   end
   

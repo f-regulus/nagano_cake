@@ -3,7 +3,7 @@
   
   <div class="row mt-4">
     <div class="col-md-9 mx-auto">
-      <h2><mark class="h4 bg-light">商品詳細</mark></h2>
+      <h2><mark class="text-center w-25 h4 bg-light">商品詳細</mark></h2>
     </div>
   </div>
   
@@ -36,7 +36,7 @@
       <p>
         <small>販売ステータス</small>
       <% if @item.is_active == false %>
-        <small>販売中</small>
+        <small class="text-success">販売中</small>
       <% else @item.is_active == true %>
         <small>販売停止中</small>
       <% end %>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col-md-9 mx-auto">
-      <h2><mark class="h4 bg-light">商品新規登録</mark></h2>
+      <h2 class="text-center w-25 h4 bg-light">商品新規登録</h2>
     </div>
   </div>
   
@@ -12,7 +12,7 @@
       <div class="form-group row">
         <%= f.label :image, '商品画像', class: "col-sm-3 col-form-label" %>
         <div class="col-sm-8">
-          <%= f.file_field :image, accept: 'image/*', class: "bg-white rounded" %>
+          <%= f.file_field :image, accept: 'image/*' %>
         </div>
       </div>
       
