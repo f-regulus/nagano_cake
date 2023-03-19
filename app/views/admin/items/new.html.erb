@@ -6,65 +6,51 @@
   </div>
   
   <div class="row mt-4">
-    <div class="col-6 mx-auto">
+    <div class="col-md-6 mx-auto">
       <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
-      
-      <div class="form-group row">
-        <%= f.label :image, '商品画像', class: "col-sm-3 col-form-label" %>
-        <div class="col-sm-8">
-          <%= f.file_field :image, accept: 'image/*' %>
-        </div>
-      </div>
-      
-      <div class="form-group row">
-        <%= f.label :name, '商品名', class: "col-sm-3 col-form-label" %>
-        <div class="col-sm-8">
-          <%= f.text_field :name, placeholder: '商品名', class: "form-control" %>
-        </div>
-      </div>
-      
-      <div class="form-group row">
-        <%= f.label :introduction, '商品説明', class: "col-sm-3 col-form-label" %>
-        <div class="col-sm-8">
-          <%= f.text_area :introduction, placeholder: 'ここに説明文を記述します', class: "form-control" %>
-        </div>
-      </div>
-      
-      <div class="form-group row">
-        <%= f.label :genre_id, 'ジャンル', class: "col-sm-3 col-form-label" %>
-        <div class="col-sm-8">
-          <%= f.select :genre_id, Genre.all.map { |genre| [genre.genre_name, genre.id] }, { include_blank: '-- 選択してください --' }, class: "custom-select"%>
-        </div>
-      </div>
-      
-      <div class="form-group row">
-        <%= f.label :price, '税抜価格', class: "col-sm-3 col-form-label" %>
-        <div class="col-sm-8">
-          <%= f.number_field :price, placeholder: '1000', class: "form-control", style: "display: inline;" %>
-        </div>
-        <div class:"col-sm-1" style="font-size: 16px; height: 38px; line-height: 38px;">円</div>
-      </div>
-      
-      <div class="form-group row">
-        <div class="col-sm-4">
-          <%= f.label :is_active, '販売ステータス' %>
-        </div>
-
-        <div class="form-check col-sm-2">
-          <%= f.radio_button :is_active, false, checked: true, class: "form-check-input" %>
-          <%= f.label :is_active, '販売中', class: "form-check-label" %>
-        </div>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><%= f.label :image, '商品画像' %></td>
+            <td><%= f.file_field :image, accept: 'image/*' %></td>
+          </tr>
           
-        <div class="form-check">
-          <%= f.radio_button :is_active, true, checked: false, class: "form-check-input" %>
-          <%= f.label :is_active, '販売停止', class: "form-check-label" %>
-        </div>
-      </div>
-      
-      <div class="form-group col-sm-2 mx-auto">
-        <%= f.submit '新規登録', class: "btn btn-success btn-lg" %>
-      </div>
-      
+          <tr>
+            <td><%= f.label :name, '商品名' %></td>
+            <td><%= f.text_field :name, placeholder: '商品名' %></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label :introduction, '商品説明' %></td>
+            <td><%= f.text_area :introduction, placeholder: 'ここに説明文を記述します' %></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label :genre_id, 'ジャンル' %></td>
+            <td><%= f.select :genre_id, Genre.all.map { |genre| [genre.genre_name, genre.id] }, { include_blank: '-- 選択してください --' } %></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label :price, '税抜価格' %></td>
+            <td><%= f.number_field :price, placeholder: '1000', style: "display: inline;" %><small style="font-size: 16px; height: 38px; line-height: 38px;">円</small></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label '販売ステータス' %></td>
+            <td>
+              <%= f.radio_button :is_active, false, checked: true %>
+              <%= f.label :is_active, '販売中' %>
+              <%= f.radio_button :is_active, true, checked: false %>
+              <%= f.label :is_active, '販売停止' %>
+            </td>
+          </tr>
+          
+          <tr>
+            <td></td>
+            <td><%= f.submit '新規登録', class: "btn btn-success btn-lg" %></td>
+          </tr>
+        </tbody>
+      </table>
       <% end %>
     </div>
   </div>

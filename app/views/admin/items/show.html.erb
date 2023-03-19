@@ -12,36 +12,43 @@
       <%= image_tag @item.image, size: "300x200" %>
     </div>
     
-    <div class="col-8">
-      <p>
-        <small>商品名</small>
-        <%= @item.name %>
-      </p>
-      
-      <p>
-        <small>商品説明</small>
-        <%= @item.introduction %>
-      </p>
-      
-      <p>
-        <small>ジャンル</small>
-        <%= @item.genre.genre_name %>
-      </p>
-      
-      <p>
-        <small>税込価格（税抜価格）</small>
-        <%= @item.price %>
-      </p>
-      
-      <p>
-        <small>販売ステータス</small>
-      <% if @item.is_active == false %>
-        <small class="text-success">販売中</small>
-      <% else @item.is_active == true %>
-        <small>販売停止中</small>
-      <% end %>
-      </p>
-      <%= link_to '編集する', edit_admin_item_path(@item), class: "btn btn-success" %>
+    <div class="col-md-8 mx-auto">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="w-25">商品名</td>
+            <td><%= @item.name %></td>
+          </tr>
+        
+          <tr>
+            <td class="w-25">商品説明</td>
+            <td><%= @item.introduction %></td>
+          </tr>
+  
+          <tr>
+            <td class="w-25">ジャンル</td>
+            <td><%= @item.genre.genre_name %></td>
+          </tr>
+  
+          <tr>
+            <td class="w-25">税込価格<br />（税抜価格）</td>
+            <td><%= @item.price %></td>
+          </tr>
+          
+          <tr>
+            <td class="w-25">販売ステータス</td>
+              <% if @item.is_active == false %>
+            <td class="text-success">販売中</td>
+              <% else @item.is_active == true %>
+            <td>販売停止中</td>
+              <% end %>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= link_to '編集する', edit_admin_item_path(@item), class: "btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
