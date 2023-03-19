@@ -1,10 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
-      <h4>ジャンル検索</h4>
-    </div>
-    <div class="col-8">
-      <h2>商品一覧</h2>
+      <%= render 'genres', genres: @genres %>
+    <div class="col-9">
+      <h3><strong>商品一覧</strong>(全<%= @items.count %>件)</h3>
 
       <table>
         <tbody>
