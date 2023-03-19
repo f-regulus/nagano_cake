@@ -1,9 +1,9 @@
 <div class="container">
-<h2><%= @customer.full_name %>さんの会員詳細</h2>
+<h2><%= @customer.full_name %>さんの会員情報編集</h2>
 
 <table class="table">
   <tbody>
-    <%= form_with model: @customer,url: admin_customer_path,method: :pacth do |f| %>
+    <%= form_with model: @customer,url: admin_customer_path(@customer)  do |f| %>
     <tr>
       <td>会員ID</td>
       <td><%= @customer.id %></td>
