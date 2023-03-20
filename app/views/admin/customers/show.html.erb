@@ -1,7 +1,7 @@
-<div><%= flash[:notice] %></div>
-
 
 <div class="container">
+<div><%= flash[:notice] %></div>
+
 <h2><%= @customer.full_name %>さんの会員詳細</h2>
 
 <table class="table">
@@ -37,7 +37,12 @@
         </tr>
          <tr>
             <td>会員ステータス</td>
-            <td><%= @customer.is_deleted %></td>
+            <td><% if @customer.is_deleted %>
+                退会
+                <% else %>
+                有効
+                <% end %>
+            </td>
         </tr>
     </tbody>
 </table>
