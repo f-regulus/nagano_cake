@@ -31,7 +31,7 @@ class Admin::ItemsController < ApplicationController
       flash[:item_notice] = '商品を更新しました。'
       redirect_to admin_item_path(@item)
     else
-      render :show
+      render :edit
     end
   end
 
