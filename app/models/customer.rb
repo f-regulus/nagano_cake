@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :delivery, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
 
   # 退会機能　is_deletedがfalseならtrueを返すようにしている
   #def active_for_authentication?

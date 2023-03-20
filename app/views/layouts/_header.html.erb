@@ -11,15 +11,13 @@
           <ul class = "navbar-nav mr-auto">
             <% if customer_signed_in? %>
               <li class = "nav-item">
-                <%= link_to customers_mypage_path, class: "nav-link text-dark border rounded btn mr-3" do %>
-                  <h4>マイページ</h4>
-                <% end %>
+                <%= link_to 'マイページ', customers_mypage_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
                 <%= link_to '商品一覧', items_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
-                <h4 class = "nav-link text-dark border rounded btn mr-3">カート</h4>
+                <%= link_to 'カート', cart_items_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
                 <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-dark border rounded btn' %>
