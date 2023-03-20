@@ -39,8 +39,9 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :items
     resources :genres, only: [:index, :edit, :create, :update]
-    get 'admin/serches' => ''
   end
+  
+  get '/search', to: 'searches#search'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
