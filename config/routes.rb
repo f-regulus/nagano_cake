@@ -27,7 +27,10 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe'
     patch 'customers/withdrawal'
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
-    resources :orders, only: [:new, :index, :show, :create, :confirm, :success]
+    get 'orders/new' => 'orders#new'
+    post 'orders' => 'orders#create'
+    get 'orders/:id' => 'orders#show'
+    get 'orders' => 'orders#index'
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/success' => 'orders#success'
   end
