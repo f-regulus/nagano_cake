@@ -10,32 +10,33 @@
       <%= form_with model: @item, url: admin_item_path(@item) do |f| %>
       <table class="table table-borderless">
         <tbody>
-          <tr>
-            <td><%= f.label :image, '商品画像' %></td>
+          <tr class="form-group">
+            <td><%= f.label :image, '商品画像', class: "col-form-label" %></td>
             <td><%= f.file_field :image, accept: 'image/*' %></td>
           </tr>
           
-          <tr>
-            <td><%= f.label :name, '商品名' %></td>
-            <td><%= f.text_field :name, placeholder: '商品名' %></td>
+          <tr class="form-group">
+            <td><%= f.label :name, '商品名', class: "col-form-label" %></td>
+            <td><%= f.text_field :name, placeholder: '商品名', class:"form-control" %></td>
           </tr>
           
-          <tr>
-            <td><%= f.label :introduction, '商品説明' %></td>
-            <td><%= f.text_area :introduction, placeholder: 'ここに説明文を記述します' %></td>
+          <tr class="form-group">
+            <td><%= f.label :introduction, '商品説明', class: "col-form-label" %></td>
+            <td><%= f.text_area :introduction, placeholder: 'ここに説明文を記述します', class: "form-control" %></td>
           </tr>
           
-          <tr>
-            <td><%= f.label :genre_id, 'ジャンル' %></td>
-            <td><%= f.select :genre_id, Genre.all.map { |genre| [genre.genre_name, genre.id] }, { include_blank: '-- 選択してください --' } %></td>
+          <tr class="form-group">
+            <td><%= f.label :genre_id, 'ジャンル', class: "col-form-label" %></td>
+            <td><%= f.select :genre_id, Genre.all.map { |genre| [genre.genre_name, genre.id] }, { include_blank: '-- 選択してください --'}, class: "custom-select" %></td>
           </tr>
           
-          <tr>
-            <td><%= f.label :price, '税抜価格' %></td>
-            <td><%= f.number_field :price, placeholder: '1000', style: "display: inline;" %><small style="font-size: 16px; height: 38px; line-height: 38px;">円</small></td>
+          <tr class="form-group">
+            <td><%= f.label :price, '税抜価格', class: "col-form-label" %></td>
+            <td><%= f.number_field :price, placeholder: '1000', style: "display: inline;", class: "form-control" %></td>
+            <td style="font-size: 16px; height: 38px; line-height: 38px;">円</td>
           </tr>
           
-          <tr>
+          <tr class="form-group">
             <td><%= f.label '販売ステータス' %></td>
             <td>
               <%= f.radio_button :is_active, false %>
@@ -45,11 +46,12 @@
             </td>
           </tr>
           
-          <tr>
+          <tr class="form-group">
             <td></td>
-            <td><%= f.submit '新規登録', class: "btn btn-success btn-lg" %></td>
+            <td><%= f.submit '変更を保存する', class: "btn btn-success btn-lg" %></td>
           </tr>
         </tbody>
+      </table>
       <% end %>
     </div>
   </div>
