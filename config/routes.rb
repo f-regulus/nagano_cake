@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    delete 'cart_items' => 'cart_items#destroy_all'
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
