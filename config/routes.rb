@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :items
     resources :genres, only: [:index, :edit, :create, :update]
+    get 'admin/serches' => ''
   end
 
 
