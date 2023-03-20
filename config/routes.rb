@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-
-  end
-  namespace :admin do
     get 'homes/top'
    resources :customers, only: [:index,:show,:edit,:update]
   end
@@ -37,6 +30,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    delete 'cart_items' => 'cart_items#destroy_all'
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -48,6 +43,8 @@ Rails.application.routes.draw do
     resources :items
     resources :genres, only: [:index, :edit, :create, :update]
   end
+  
+  get '/search', to: 'searches#search'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

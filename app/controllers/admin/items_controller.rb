@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_item, only: [:show, :edit, :update]
-  
+
   def new
     @item = Item.new
   end
@@ -17,7 +17,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.page(params[:page]).per(5)
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def show
@@ -25,22 +25,22 @@ class Admin::ItemsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     if @item.update(item_params)
       flash[:item_notice] = '商品を更新しました。'
       redirect_to admin_item_path(@item)
     else
-      render :show
+      render :edit
     end
   end
-  
+
   private
-  
+
   def set_item
     @item = Item.find(params[:id])
   end
-  
+
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :image, :genre_id, :is_active)
   end

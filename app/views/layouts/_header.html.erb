@@ -11,31 +11,24 @@
           <ul class = "navbar-nav mr-auto">
             <% if customer_signed_in? %>
               <li class = "nav-item">
-                <%= link_to customers_mypage_path, class: "nav-link text-dark border rounded btn mr-3" do %>
-                  <h4>マイページ</h4>
-                <% end %>
+                <%= link_to 'マイページ', customers_mypage_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
-                <h4 class = "nav-link text-dark border rounded btn mr-3">商品一覧</h4>
+                <%= link_to '商品一覧', items_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
-                <h4 class = "nav-link text-dark border rounded btn mr-3">カート</h4>
+                <%= link_to 'カート', cart_items_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
                 <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-dark border rounded btn' %>
               </li>
-              <form method="get" action="" target="_blank">
-              <input type="text" name="q" size="31" maxlength="255" value="" placeholder="検索キーワードを入力してください">
-              <input type="submit" name="btng" value="検索">
-              </form>
-
 
             <% elsif admin_signed_in? %>
               <li class="nav-item">
                 <%= link_to '商品一覧', admin_items_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class="nav-item">
-                <h4 class="nav-link text-dark border rounded btn mr-3">会員一覧</h4>
+                <%= link_to '会員一覧', admin_customers_path,class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class="nav-item">
                 <h4 class="nav-link text-dark border rounded btn mr-3">注文履歴一覧</h4>
@@ -46,17 +39,13 @@
               <li class="nav-item">
                 <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-dark border rounded btn" %>
               </li>
-              <form method="get" action="" target="_blank">
-              <input type="text" name="q" size="31" maxlength="255" value="" placeholder="検索キーワードを入力してください">
-              <input type="submit" name="btng" value="検索">
-              </form>
 
             <% else %>
               <li class = "nav-item">
                 <%= link_to 'About', about_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
-                <h4 class = "nav-link text-dark border rounded btn mr-3">商品一覧</h4>
+                <%= link_to '商品一覧', items_path, class: "nav-link text-dark border rounded btn mr-3" %>
               </li>
               <li class = "nav-item">
                 <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark border rounded btn mr-3' %>
@@ -64,15 +53,17 @@
               <li class = "nav-item">
                 <%= link_to 'ログイン', new_customer_session_path, class: 'nav-link text-dark border rounded btn' %>
               </li>
-              <form method="get" action="" target="_blank">
-              <input type="text" name="q" size="31" maxlength="255" value="" placeholder="検索キーワードを入力してください">
-              <input type="submit" name="btng" value="検索">
-              </form>
 
             <% end %>
           </ul>
         </div>
       </nav>
+    </div>
+    <div class="text-right">
+      <%= form_with url: search_path, method: :get do |f| %>
+        <%= f.text_field :word, placeholder: 'Search' %>
+        <%= f.submit '検索する' %>
+      <% end %>
     </div>
   </div>
 </header>

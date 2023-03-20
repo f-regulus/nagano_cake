@@ -3,6 +3,7 @@ class Item < ApplicationRecord
     validates :name
     validates :introduction
     validates :price
+    validates :image
     validates :genre_id
   end
 
@@ -12,4 +13,14 @@ class Item < ApplicationRecord
 
   has_many :order_details
   has_many :order, through: :order_details
+  has_many :cart_items, dependent: :destroy
+
+  # 消費税を求めるメソッド
+  def with_tax_price
+    (price * 1.1).floor
+  end
+  
+  def self.search_for(word)
+    Item.where('name LIKE ?', '%' + word + '%' )
+  end
 end
