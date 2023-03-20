@@ -27,13 +27,18 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe'
     patch 'customers/withdrawal'
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
-    resources :orders, only: [:new, :index, :show, :create, :confirm, :success]
+    get 'orders/new' => 'orders#new'
+    post 'orders' => 'orders#create'
+    get 'orders/:id' => 'orders#show'
+    get 'orders' => 'orders#index'
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/success' => 'orders#success'
   end
 
   scope module: :public do
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    delete 'cart_items' => 'cart_items#destroy_all'
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -45,6 +50,8 @@ Rails.application.routes.draw do
     resources :items
     resources :genres, only: [:index, :edit, :create, :update]
   end
+  
+  get '/search', to: 'searches#search'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
