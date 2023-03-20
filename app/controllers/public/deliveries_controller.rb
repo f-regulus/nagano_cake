@@ -1,7 +1,7 @@
 class Public::DeliveriesController < ApplicationController
   def index
     @delivery = Delivery.new
-    @deliveries = Delivery.all
+    @deliveries = current_customer.delivery.all
   end
 
   def edit
