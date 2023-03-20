@@ -62,10 +62,10 @@
       </nav>
     </div>
     <div class="text-right">
-      <form method="get" action="" target="_blank">
-        <input type="text" name="" size="31" maxlength="255" value="" placeholder="検索キーワードを入力してください">
-        <input type="submit" name="" value="検索">
-      </form>
+      <%= form_with url: search_path, method: :get do |f| %>
+        <%= f.text_field :word, placeholder: 'Search' %>
+        <%= f.submit '検索する' %>
+      <% end %>
     </div>
   </div>
 </header>
