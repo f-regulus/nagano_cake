@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'orders/index'
+    get 'orders/show'
+    get 'orders/update'
+  end
+
+  namespace :admin do
     get 'homes/top'
-   resources :customers, only: [:index,:show,:edit,:update]
+   resources :customers
+   resources :orders,only:[:index,:show,:updete]
   end
 
   root to: 'homes#top'

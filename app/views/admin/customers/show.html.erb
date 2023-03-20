@@ -1,7 +1,7 @@
-<div>
-  <%= flash[:notice] %>
-</div>
+<div><%= flash[:notice] %></div>
 
+
+<div class="container">
 <h2><%= @customer.full_name %>さんの会員詳細</h2>
 
 <table class="table">
@@ -43,4 +43,5 @@
 </table>
 
 <%= link_to "編集する", edit_admin_customer_path,class: "btn btn-success mr-5 ml-5" %>
-<%= link_to "注文履歴一覧を見る",class: "btn btn-primary" %>
+<button type="button" class="btn btn-primary">注文履歴一覧を見る</button>
+</div>
