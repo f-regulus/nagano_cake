@@ -1,11 +1,20 @@
 <div class="container">
   
-  <h2>ジャンル編集</h2>
-  
-  <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
-    <%= f.label :genre_name, 'ジャンル名' %>
-    <%= f.text_field :genre_name %>
-    <%= f.submit '変更を保存', class: "btn btn-success" %>
-  <% end %>
+  <div class="row mt-4">
+    <div class="col-10 mx-auto">
+      <h2 class="text-center w-25 h4 bg-light">ジャンル編集</h2>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <div class="row">
+      <div class="col-6">
+        <%= render 'layouts/errors', obj: @genre %>
+        <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
+          <%= render :partial => 'form', :locals => {:f => f, :edit_flag => true} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
   
 </div>
