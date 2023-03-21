@@ -1,6 +1,6 @@
-<div>
-  <%= flash[:notice] %>
-</div>
+
+<div class="container">
+<div><%= flash[:notice] %></div>
 
 <h2><%= @customer.full_name %>さんの会員詳細</h2>
 
@@ -37,10 +37,16 @@
         </tr>
          <tr>
             <td>会員ステータス</td>
-            <td><%= @customer.is_deleted %></td>
+            <td><% if @customer.is_deleted %>
+                退会
+                <% else %>
+                <div class="text-success">有効</div>
+                <% end %>
+            </td>
         </tr>
     </tbody>
 </table>
 
 <%= link_to "編集する", edit_admin_customer_path,class: "btn btn-success mr-5 ml-5" %>
-<%= link_to "注文履歴一覧を見る",class: "btn btn-primary" %>
+<button type="button" class="btn btn-primary">注文履歴一覧を見る</button>
+</div>

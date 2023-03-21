@@ -1,9 +1,9 @@
 <div class="container">
 <h2><%= @customer.full_name %>さんの会員情報編集</h2>
 
+ <%= form_with model: @customer,url: admin_customer_path(@customer),method: :patch do |f| %>
 <table class="table">
   <tbody>
-    <%= form_with model: @customer,url: admin_customer_path(@customer)  do |f| %>
     <tr>
       <td>会員ID</td>
       <td><%= @customer.id %></td>
@@ -35,15 +35,17 @@
     <tr>
       <td>会員ステータス</td>
       <td>
-        <label><input type="radio" name="status" />有効</label>
-　　　　<label><input type="radio" name="status" />退会</label>
+        　<%= f.radio_button :is_deleted, false %>
+          <%= f.label :is_deleted, "有効",{value: :false, style: "display: inline-block;"} %>
+          <%= f.radio_button :is_deleted, true %>
+          <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
       </td>
     </tr>
     <tr>
       <td></td>
       <td><%= f.submit "変更を保存",class: "btn btn-success btn-lg" %></td>
     </tr>
-    <% end %>
   </tbody>
  </table>
+ <% end %>
 </div>
