@@ -28,7 +28,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      flash[:item_notice] = '商品を更新しました。'
+      flash[:notice] = '商品を更新しました。'
       redirect_to admin_item_path(@item)
     else
       render :edit
@@ -36,8 +36,12 @@ class Admin::ItemsController < ApplicationController
   end
   
   def destroy
-    @item.destroy
-    redirect_to admin_items_path
+    if @item.destroy
+      flash[:notice] = '該当の商品を削除しました'
+      redirect_to admin_items_path
+    else
+      render :show
+    end
   end
 
   private

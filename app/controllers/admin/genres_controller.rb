@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
-  before_action :edit_genre, only: [:edit, :update]
+  before_action :edit_genre, only: [:edit, :update, :destroy]
   
   def index
     @genre = Genre.new
@@ -10,7 +10,7 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      flash[:genre_notice] = 'ジャンルを登録しました'
+      flash[:notice] = 'ジャンルを登録しました'
       redirect_to admin_genres_path
     else
       @genres = Genre.all
@@ -23,7 +23,16 @@ class Admin::GenresController < ApplicationController
   
   def update
     if @genre.update(genre_params)
-      flash[:genre_notice] = '変更を保存しました'
+      flash[:notice] = '変更を保存しました'
+      redirect_to admin_genres_path
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    if @genre.destroy
+      flash[:notice] = '該当のジャンルを削除しました'
       redirect_to admin_genres_path
     else
       render :edit
