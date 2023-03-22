@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :items
     resources :genres, only: [:index, :edit, :create, :update]
   end
-  
+
   get '/search', to: 'searches#search'
 
 

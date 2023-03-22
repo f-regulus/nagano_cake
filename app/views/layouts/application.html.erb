@@ -12,9 +12,12 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <main class="mt-5">
+    <div class="mt-5 alert alert" role="alert">
+      <%= flash[:notice] %>
+    </div>
+    <main>
       <%= yield %>
-    </main>
+     </main>
     <%= render 'layouts/footer' %>
   </body>
 </html>
