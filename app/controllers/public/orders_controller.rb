@@ -5,35 +5,16 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     @deliveries = current_customer.delivery.all
   end
-
-  def create
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    if@order.save!
-      #カート情報
-      current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
-        @order_details = OrderDetails.new #初期化宣言
-        @order_details.item_id = cart_item.item_id #商品idを注文商品idに代入
-        @order_details.amount = cart_item.amount #商品の個数を注文商品の個数に代入
-        @order_details.price = @order.billing_amount #請求金額に代入billing_amount
-        @order_details.order_id = @order.id #注文商品に注文idを紐付け
-        @order_details.save #注文商品を保存
-      end
-
-      #カートの中身を削除
-      current_customer.cart_items.destroy_all
-      redirect_to orders_success_path
-    end
-  end
-
+  
   #注文情報確認画面
   def confirm
+    @total = 0
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
 
       # ご自身の住所 [:address_option]=="0"としてデータをhtmlから受ける
     if params[:order][:address_option] == "0"
-      @order.postal_code = current_customer.post_code
+      @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.full_name
 
@@ -55,6 +36,27 @@ class Public::OrdersController < ApplicationController
     end
     #orderテーブルの顧客idとログインしている顧客idを紐付ける
     @order.customer_id = current_customer.id
+  end
+
+  def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.postage = 800
+    @order.save!
+      #カート情報
+      current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
+        @order_details = OrderDetails.new #初期化宣言
+        @order_details.item_id = cart_item.item_id #商品idを注文商品idに代入
+        @order_details.amount = cart_item.amount #商品の個数を注文商品の個数に代入
+        @order_details.price = @order.billing_amount #請求金額に代入billing_amount
+        @order_details.order_id = @order.id #注文商品に注文idを紐付け
+        @order_details.save #注文商品を保存
+      end
+      
+      #カートの中身を削除
+      current_customer.cart_items.destroy_all
+      redirect_to orders_success_path
+    
   end
 
   # 注文完了画面
