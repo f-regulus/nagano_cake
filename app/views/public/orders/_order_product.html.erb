@@ -1,0 +1,23 @@
+    <div class='col-8 mt-3'>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="table-active text-dark">商品名</td>
+            <td class="table-active text-dark">単価(税込み)</td>
+            <td class="table-active text-dark">数量</td>
+            <td class="table-active text-dark">小計</td>
+          </tr>
+          <% cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.item.name %>
+                <%= cart_item.item.name %></td>
+              <td><%= cart_item.item.price %></td>
+              <td><%= cart_item.amount %></td>
+              <td><% subtotal = (cart_item.item.price*cart_item.amount).to_i %>
+                <%= subtotal %></td>
+            </tr>
+            <% total += (cart_item.item.price*cart_item.amount) %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>

@@ -12,13 +12,13 @@ class Public::OrdersController < ApplicationController
     if@order.save!
       #カート情報
       current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
-        @ordered_item = OrderedItem.new #初期化宣言
-        @ordered_item.item_id = cart_item.item_id #商品idを注文商品idに代入
-        @ordered_item.quantity = cart_item.quantity #商品の個数を注文商品の個数に代入
-        @ordered_item.tax_included_price = (cart_item.item.price*1.08).floor #消費税込みに計算して代入
-        @ordered_item.order_id =  @order.id #注文商品に注文idを紐付け
-        @ordered_item.save #注文商品を保存
-      end #ループ終わり
+        @order_details = OrderDetails.new #初期化宣言
+        @order_details.item_id = cart_item.item_id #商品idを注文商品idに代入
+        @order_details.amount = cart_item.amount #商品の個数を注文商品の個数に代入
+        @order_details.price = @order.billing_amount #請求金額に代入billing_amount
+        @order_details.order_id = @order.id #注文商品に注文idを紐付け
+        @order_details.save #注文商品を保存
+      end
 
       #カートの中身を削除
       current_customer.cart_items.destroy_all
@@ -26,15 +26,10 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def index
-  end
-
-  def show
-  end
-
   #注文情報確認画面
   def confirm
     @order = Order.new(order_params)
+    @cart_items = current_customer.cart_items
 
       # ご自身の住所 [:address_option]=="0"としてデータをhtmlから受ける
     if params[:order][:address_option] == "0"
@@ -66,9 +61,18 @@ class Public::OrdersController < ApplicationController
   def success
   end
 
+  def index
+    @order_details = OrderDetails.all
+  end
+
+  def show
+    @order_detail = OrderDetails.find(params[:id])
+    @cart_items = current_customer.cart_items
+  end
+
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment)
+    params.require(:order).permit(:postal_code, :address, :name, :payment, :billing_amount, :postage, :status)
   end
 end
