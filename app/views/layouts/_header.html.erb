@@ -61,10 +61,12 @@
               </ul>
             </div>
           </nav>
-          <div class="text-right">
+          <div class="text-right" style="position: relative">
             <%= form_with url: search_path, method: :get do |f| %>
-              <%= f.text_field :word, placeholder: 'Search' %>
-              <%= f.submit '検索する' %>
+            <%= f.text_field :word, placeholder: 'Search', class: "col-4 ml-auto form-control" %>
+              <%= f.button type: "submit", class: "btn btn-defalt", style: "position: absolute; top: 0px; right: 0px;" do %>
+                <i class="fas fa-search text-dark"></i>
+              <% end %>
             <% end %>
           </div>
         </div>
