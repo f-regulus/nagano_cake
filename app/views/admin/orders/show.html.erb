@@ -8,7 +8,7 @@
       <td>購入者</td>
       <td>
         <%= link_to admin_order_path(@order) do %>
-        <%= @order.custmer.full_name %>
+        <%= @order.customer.full_name %>
         <% end %>
       </td>
     </tr>
@@ -18,8 +18,8 @@
     </tr>
     <tr>
       <td>配送先</td>
-      <td><%= @order.custmer.postal_code %>
-          <%= @order.custmer.address %>
+      <td><%= @order.customer.postal_code %>
+          <%= @order.customer.address %>
       </td>
     </tr>
     <tr>
@@ -57,7 +57,7 @@
       <% @order_details.each do |order_detail| %>
       <tbody>
         <tr>
-          <td class="col-xs-4"><%= order_detail.product.name%></td>
+          <td class="col-xs-4"><%= order_detail.item.name %></td>
           <td class="col-xs-2">¥<%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
           <td><%= order_detail.amount %></td>
           <td class="col-xs-2">¥<%= ((order_detail.price * order_detail.amount*1.1).floor).to_s(:delimited) %></td>
@@ -78,7 +78,7 @@
     <div>
       <p>
         <strong class="col-xs-3">商品合計</strong>
-         ¥<%= (@order.total_fee - @order.shipping).to_s(:delimited)%>
+         ¥<%= (@order.billing_amount - @order.postage).to_s(:delimited) %>
       </p>
     </div>
     <br>
@@ -86,7 +86,7 @@
     <div>
       <p>
         <strong class="col-xs-2">送料</strong>
-        ¥<%= @order.shipping %>
+        ¥<%= @order.postage %>
       </p>
     </div>
     <br>
@@ -94,7 +94,7 @@
     <div>
       <p>
         <strong class="col-xs-4">請求金額合計</strong>
-        ¥<%= @order.total_fee.to_s(:delimited) %>
+        ¥<%= @order.billing_amount.to_s(:delimited) %>
       </p>
     </div>
     <br>
