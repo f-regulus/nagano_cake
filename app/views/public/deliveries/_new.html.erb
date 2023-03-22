@@ -1,17 +1,17 @@
 <%= form_with model: delivery do |f| %>
-  <table>
+  <table class="table table-borderless">
     <tbody>
       <tr>
-        <td><a>郵便番号(ハイフン)</a></td>
-        <td><%= f.text_field :postcode, size: 15 %></td>
+        <td><%= f.label :postcode, '郵便番号(ハイフンなし)', class: "col-form-label" %></td>
+        <td><%= f.text_field :postcode, placeholder: '0000000', class:"form-control" %></td>
       </tr>
       <tr>
         <td><a>住所</a></td>
-        <td><%= f.text_field :address, size: 50 %></td>
+        <td><%= f.text_field :address, placeholder: '東京都渋谷区佐々木神園町0-0', class:"form-control" %></td>
       </tr>
       <tr>
         <td><a>宛名</a></td>
-        <td><%= f.text_field :name, size: 15 %></td>
+        <td><%= f.text_field :name, placeholder: '令和道子', class:"form-control" %></td>
         <td><%= f.submit "新規登録", class: 'btn btn-success' %></td>
       </tr>
     </tbody>
