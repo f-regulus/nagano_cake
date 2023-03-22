@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def new
     @item = Item.new
@@ -33,6 +33,11 @@ class Admin::ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def destroy
+    @item.destroy
+    redirect_to admin_items_path
   end
 
   private

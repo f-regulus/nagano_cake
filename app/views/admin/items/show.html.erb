@@ -11,35 +11,35 @@
       <div class="col-10 mx-auto">
       
       <div class="row mt-5">
-        <div class="col-5">
-          <%= image_tag @item.image, size: "300x200", style: "background-size: cover; background-position: center;" %>
+        <div class="col-6">
+          <%= image_tag @item.image, size: "350x250", style: "background-size: cover; background-position: center;" %>
         </div>
         
-        <div class="col-7">
+        <div class="col-6">
           <table class="table table-borderless">
             <tbody>
               <tr>
-                <td class="w-25">商品名</td>
-                <td><%= @item.name %></td>
+                <td>商品名</td>
+                <td class="w-50"><%= @item.name %></td>
               </tr>
             
               <tr>
-                <td class="w-25">商品説明</td>
+                <td>商品説明</td>
                 <td><%= @item.introduction %></td>
               </tr>
       
               <tr>
-                <td class="w-25">ジャンル</td>
+                <td>ジャンル</td>
                 <td><%= @item.genre.genre_name %></td>
               </tr>
       
               <tr>
-                <td class="w-25">税込価格<br />(税抜き価格)</td>
+                <td>税込価格<br />(税抜き価格)</td>
                 <td><%= @item.with_tax_price %><br /><%= "(" + @item.price.to_s + ")" %></td>
               </tr>
               
               <tr>
-                <td class="w-25">販売ステータス</td>
+                <td>販売ステータス</td>
                   <% if @item.is_active == false %>
                 <td class="text-success">販売中</td>
                   <% else @item.is_active == true %>
@@ -47,13 +47,12 @@
                   <% end %>
               </tr>
               <tr>
-                <td></td>
                 <td><%= link_to '編集する', edit_admin_item_path(@item), class: "btn btn-success" %></td>
               </tr>
             </tbody>
           </table>
         </div>
-        
+        <%= link_to '削除する', admin_item_path(@item.id), method: :delete %>
       </div>
     </div>
   </div>
