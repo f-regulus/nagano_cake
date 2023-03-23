@@ -1,16 +1,15 @@
 <div class="container">
-
-  <div class="row mt-4">
-    <div class="col-10 mx-auto">
-      <h2 class="text-center w-25 h4 bg-light d-inline-block">会員一覧</h2>
+    <div class="row mt-4">
+      <div class="col-10 mx-auto">
+        <h2 class="text-center bg-light h4 col-3">会員一覧</h2>
+      </div>
     </div>
-  </div>
-
+    
   <div class="row mt-4">
-    <div class="col-8 mx-auto">
-      <table class="table table-borderless">
+    <div class="col-11 mx-auto">
+      <table class="table">
         <thead>
-          <tr class="table-active text-dark">
+          <tr class="text-center">
             <th>会員ID</th>
             <th>氏名</th>
             <th>メールアドレス</th>
@@ -18,24 +17,20 @@
           </tr>
         </thead>
         <tbody>
-            <% @customers.each do |customer| %>
-            <tr>
+          <% @customers.each do |customer| %>
+            <tr class="text-center">
               <td><%= customer.id %></td>
               <td><%= link_to customer.full_name,admin_customer_path(customer) %></td>
               <td><%= customer.email %></td>
-              <td><% if customer.is_deleted %>
-                  退会
-                 <% else %>
-                 <div class="text-success">有効</div>
-                 <% end %>
-             </td>
+                <% if customer.is_deleted %>
+                  <td>退会</td>
+                <% else %>
+                  <td class="text-success">有効</td>
+                <% end %>
             </tr>
-              <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-     <div class="d-flex justify-content-center">
-     <div><%= paginate @customers %></div>
-  </div>
+          <% end %>
+        </tbody>
+       </table>
+     </div>
+   </div>
 </div>

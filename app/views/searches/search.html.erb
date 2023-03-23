@@ -1,11 +1,12 @@
 <div class="container">
   
+  <% if @result.empty? %>
+    <p>該当の商品はありませんでした。</p>
+  <% end %>
+  
   <div class="row mt-4">
     <div class="col-10 mx-auto">
       <h2 class="text-center w-50 h4 bg-light"><%= @word %>の検索結果です。<br /><%= @result.count %>件ヒットしました。</h2>
-      <% if @result.empty? %>
-        <p>該当の商品はありませんでした。</p>
-      <% end %>
     </div>
   </div>
   
