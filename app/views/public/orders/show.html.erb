@@ -8,21 +8,21 @@
         <tbody>
           <tr>
             <td class="table-active text-dark">注文日</td>
-            <td><%= @order_detail.created_at %></td>
+            <td><%= @order.created_at %></td>
           </tr>
           <tr>
             <td class="table-active text-dark">配達先</td>
-            <td><%= @order_detail.order_id.postal_code %></br>
-              <%= @order_detail.order_id.address %></br>
-              <%= @order_detail.order_id.name %></td>
+            <td><%= @order.order_id.postal_code %></br>
+              <%= @order.order_id.address %></br>
+              <%= @order.order_id.name %></td>
           </tr>
           <tr>
             <td class="table-active text-dark">支払方法</td>
-            <td><%= @order_detail.order_id.payment %></td>
+            <td><%= @order.order_id.payment %></td>
           </tr>
           <tr>
             <td class="table-active text-dark">ステータス</td>
-            <td><%= @order_detail.order_id.status %></td>
+            <td><%= @order.order_id.status %></td>
           </tr>
         </tbody>
       </table>
@@ -34,8 +34,8 @@
         <tbody>
           <tr>
             <td class="table-active text-dark">商品合計</td>
-            <td><% @order_detail.order.postage = 800 %>
-              <%= @order_detail.order.postage %></td>
+            <td><% @order.order.postage = 800 %>
+              <%= @order.order.postage %></td>
           </tr>
           <tr>
             <td class="table-active text-dark">配送料</td>
@@ -43,8 +43,8 @@
           </tr>
           <tr>
             <td class="table-active text-dark">ご請求額</td>
-            <td><% @order_detail.order.billing_amount = @order_detail.order.postage + total.to_i %>
-              <%= @order_detail.order.billing_amount %></td>
+            <td><% @order.order.billing_amount = @order.order.postage + total.to_i %>
+              <%= @order.order.billing_amount %></td>
           </tr>
         </tbody>
       </table>
@@ -53,6 +53,6 @@
 
       <%#= 注文商品%>
       <h2 class="w-25 h4 mt-3">注文内容</h2>
-      <%= render "order_product", cart_items: @cart_items %>
+      <%= render "order_product", cart_items: @order_detail %>
 
 </div>

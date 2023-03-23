@@ -7,7 +7,29 @@
 
   <div class='row'>
     <%#= 注文商品%>
-    <%= render "order_product", cart_items: @cart_items %>
+    <%#= render "order_product", cart_items: @cart_items %>
+        <div class='col-8 mt-3'>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="table-active text-dark">商品名</td>
+            <td class="table-active text-dark">単価(税込み)</td>
+            <td class="table-active text-dark">数量</td>
+            <td class="table-active text-dark">小計</td>
+          </tr>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.item.name %>
+                <%= cart_item.item.name %></td>
+              <td><%= cart_item.item.price %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.subtotal %></td>
+              <% @total += cart_item.subtotal %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
     <div class='col-4 mt-3'>
       <table class="table table-bordered">
@@ -19,11 +41,11 @@
           </tr>
           <tr>
             <td class="table-active text-dark">商品合計</td>
-            <td><% @total += @cart_item.subtotal %></td>
+            <td><%= @total %></td>
           </tr>
           <tr>
             <td class="table-active text-dark">請求金額</td>
-            <td><% @order.billing_amount = @order.postage + (@total += @cart_item.subtotal) %>
+            <td><% @order.billing_amount = @order.postage + @total %>
               <%= @order.billing_amount %></td>
           </tr>
         </tbody>
