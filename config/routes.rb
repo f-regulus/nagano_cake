@@ -23,12 +23,9 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe'
     patch 'customers/withdrawal'
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
-    get 'orders/new' => 'orders#new'
-    post 'orders' => 'orders#create'
-    get 'orders/:id' => 'orders#show'
-    get 'orders' => 'orders#index'
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/success' => 'orders#success'
+    resources :orders, only: [:index, :new, :create, :show]
   end
 
   scope module: :public do
