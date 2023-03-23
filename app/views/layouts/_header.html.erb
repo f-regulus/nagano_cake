@@ -1,71 +1,69 @@
 <header>
+  <div class="container">
+    <div class = "d-flex justify-content-between">
+      <h1>LOGO</h1>
+      <nav class = "navbar navbar-expand-lg navbar-light bg-white">
+        <button class = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
+          <ul class = "navbar-nav mr-auto">
+            <% if customer_signed_in? %>
+              <li class = "nav-item">
+                <%= link_to 'マイページ', customers_mypage_path, class: "nav-link text-dark border rounded btn mr-3" %>
+              </li>
+              <li class = "nav-item">
+                <%= link_to '商品一覧', items_path, class: "nav-link text-dark border rounded btn mr-3" %>
+              </li>
+              <li class = "nav-item">
+                <%= link_to 'カート', cart_items_path, class: "nav-link text-dark border rounded btn mr-3" %>
+              </li>
+              <li class = "nav-item">
+                <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-dark border rounded btn' %>
+              </li>
 
-  <div class="py-1" style="background-color: #FFF5EE;">
-    <div class="container">
-      <div class="d-flex justify-content-between">
-        <h1 style="height: 96px; line-height: 96px">LOGO</h1>
-          <div class="f-flex flex-column">
-            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFF5EE;">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <% if customer_signed_in? %>
-                  <li class="nav-item">
-                    <%= link_to 'マイページ', customers_mypage_path, class: "nav-link text-dark border rounded btn mr-3" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to '商品一覧', items_path, class: "nav-link text-dark border rounded btn mr-3" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'カート', cart_items_path, class: "nav-link text-dark border rounded btn mr-3" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-dark border rounded btn' %>
-                  </li>
-                <% elsif admin_signed_in? %>
-                  <li class="nav-item">
-                    <%= link_to '商品一覧', admin_items_path, class: "nav-link text-dark border rounded btn mr-3" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to '会員一覧', admin_customers_path,class: "nav-link text-dark border rounded btn mr-3" %>
-                  </li>
-                  <li class="nav-item">
-                    <h4 class="nav-link text-dark border rounded btn mr-3">注文履歴一覧</h4>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-dark border rounded btn mr-3" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-dark border rounded btn" %>
-                  </li>
-                <% else %>
-                  <li class="nav-item">
-                    <%= link_to 'About', about_path, class: "nav-link text-dark border rounded btn mr-3" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to '商品一覧', items_path, class: "nav-link text-dark border rounded btn mr-3" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark border rounded btn mr-3' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'ログイン', new_customer_session_path, class: 'nav-link text-dark border rounded btn' %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          </nav>
-          <div class="text-right">
-            <%= form_with url: search_path, method: :get do |f| %>
-              <%= f.text_field :word, placeholder: 'Search' %>
-              <%= f.submit '検索する' %>
+            <% elsif admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to '商品一覧', admin_items_path, class: "nav-link text-dark border rounded btn mr-3" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '会員一覧', admin_customers_path,class: "nav-link text-dark border rounded btn mr-3" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '注文履歴一覧',admin_orders_path, class: "nav-link text-dark border rounded btn mr-3" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-dark border rounded btn mr-3" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-dark border rounded btn" %>
+              </li>
+
+            <% else %>
+              <li class = "nav-item">
+                <%= link_to 'About', about_path, class: "nav-link text-dark border rounded btn mr-3" %>
+              </li>
+              <li class = "nav-item">
+                <%= link_to '商品一覧', items_path, class: "nav-link text-dark border rounded btn mr-3" %>
+              </li>
+              <li class = "nav-item">
+                <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark border rounded btn mr-3' %>
+              </li>
+              <li class = "nav-item">
+                <%= link_to 'ログイン', new_customer_session_path, class: 'nav-link text-dark border rounded btn' %>
+              </li>
+
             <% end %>
-          </div>
+          </ul>
         </div>
-      </div>
+      </nav>
+    </div>
+    <div class="text-right">
+      <%= form_with url: search_path, method: :get do |f| %>
+        <%= f.text_field :word, placeholder: 'Search' %>
+        <%= f.submit '検索する' %>
+      <% end %>
     </div>
   </div>
 </header>
