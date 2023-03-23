@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row">
     <%= render 'genres', genres: @genres %>
-    <div class="col-3">
-      <%= image_tag @item.image, size: '250x200' %>
+    <div class="ml-5 col-4">
+      <%= image_tag @item.image, size: '300x200', style: "background-cover; background-position: center;" %>
     </div>
-    <div class="col-6">
-      <h3><%= @item.name %></h3>
-      <h4><%= @item.introduction %></h4>
-      <strong>￥<%= @item.with_tax_price %></strong>(税込)
+    <div class="col-4">
+      <h3 class="mb-3" style="font-weight: bold"><%= @item.name %></h3>
+      <h4 class="mb-5"><%= @item.introduction %></h4>
+      <p><strong style="font-weight: bold; font-size: 2rem;">￥<%= @item.with_tax_price %></strong>(税込)</p>
 
       <%= form_with model: @cart_item, url: cart_items_path do |f| %>
         <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.select :amount, *[1..10], { include_blank: '個数選択' }, { required: true } %>
-        <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+        <%= f.select :amount, *[1..10], { include_blank: '個数選択' }, { required: true, class: "ml-4"}  %>
+        <%= f.submit 'カートに入れる', class: "btn btn-success ml-4" %>
       <% end %>
     </div>
   </div>
