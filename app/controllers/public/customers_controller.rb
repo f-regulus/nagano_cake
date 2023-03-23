@@ -17,11 +17,6 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :kana_first_name,
-    :kana_last_name, :postal_code, :address, :telephone_number, :email )
-  end
-
   def unsubscribe
     @customer = current_customer
   end
@@ -43,6 +38,13 @@ class Public::CustomersController < ApplicationController
         redirect_to new_customer_registration_path
       end
     end
+  end
+  
+  private
+  
+  def customer_params
+    params.require(:customer).permit(:first_name, :last_name, :kana_first_name,
+    :kana_last_name, :postal_code, :address, :telephone_number, :email )
   end
 
 end
