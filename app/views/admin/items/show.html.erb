@@ -34,7 +34,7 @@
       
               <tr>
                 <td>税込価格<br />(税抜き価格)</td>
-                <td><%= @item.with_tax_price %><br /><%= "(" + @item.price.to_s + ")" %></td>
+                <td><%= @item.with_tax_price.to_s + '円' %><br /><%= '(' + @item.price.to_s + '円)' %></td>
               </tr>
               
               <tr>
