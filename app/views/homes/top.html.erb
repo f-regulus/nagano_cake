@@ -12,7 +12,7 @@
             <% @genres.each do |genre| %>
               <tr>
                 <td>
-                  <%= link_to genre.genre_name, search_path(word: genre.items.name) %>
+                  <%= genre.genre_name %>
                 </td>
               </tr>
             <% end %>
