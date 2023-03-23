@@ -12,4 +12,10 @@ class SearchesController < ApplicationController
     end
   end
   
+  def genre_search
+    @word = params[:genre_word]
+    @genre = params[:genre_id]
+    @result = Item.where(id: @genre)
+  end
+  
 end
