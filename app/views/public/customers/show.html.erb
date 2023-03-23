@@ -6,12 +6,12 @@
   </div>
 
   <div class='row mt-3'>
-    <h4><strong>登録情報</strong></h4>
-    <%= link_to "編集する", customers_mypage_edit_path, class: 'btn btn-success' %>
+    <h4 class="col-2 mb-0" style="height:38px; line-height:38px;"><strong>登録情報</strong></h4>
+    <%= link_to "編集する", customers_mypage_edit_path, class: 'btn btn-success d-inline-block col-1' %>
   </div>
 
-  <div class="col-10 mt-3">
-    <table class="table table-bordered">
+  <div class="row mt-3 ml-1">
+    <table class="col-8 table table-bordered">
       <tbody>
         <tr>
           <td class="table-active text-dark w-50">氏名</td>
@@ -41,12 +41,12 @@
     </table>
   </div>
 
-  <div class='mt-1 w-75'>
-    <h4><strong>配送先</strong></h4>
-    <%= link_to "一覧を見る", deliveries_path, class: 'btn btn-primary' %>
+  <div class='row mt-1'>
+    <h4 class="col-2 mb-0" style="height:38px; line-height:38px;"><strong>配送先</strong></h4>
+    <%= link_to "一覧を見る", deliveries_path, class: 'btn btn-primary d-inline-block col-2' %>
   </div>
-  <div class='mt-2 w-75'>
-    <h4><strong>注文履歴</strong></h4>
-    <%= link_to "一覧",  orders_path, class: 'btn btn-primary' %>
+  <div class='row mt-2'>
+    <h4 class="col-2 mb-0" style="height:38px; line-height: 38px;"><strong>注文履歴</strong></h4>
+    <%= link_to "一覧を見る",  orders_path, class: 'btn btn-primary d-inline-block col-2' %>
   </div>
 </div>
