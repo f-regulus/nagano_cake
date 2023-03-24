@@ -27,7 +27,11 @@
           <% result.each do |item| %>
             <tr>
               <td><%= item.id %></td>
-              <td><%= link_to item.name, admin_item_path(item), class: "link-dark" %></td>
+              <% if admin_signed_in? %>
+                <td><%= link_to item.name, admin_item_path(item), class: "link-dark" %></td>
+              <% else %>
+                <td><%= link_to item.name, item_path(item), class: "link-dark" %></td>
+              <% end %>
               <td><%= item.price %></td>
               <td><%= item.genre.genre_name %></td>
                 <% if item.is_active == false %>

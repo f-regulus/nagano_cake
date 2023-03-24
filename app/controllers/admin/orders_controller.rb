@@ -21,13 +21,12 @@ class Admin::OrdersController < ApplicationController
     end
     redirect_to admin_order_path
   end
-end
 
 
+  private
 
+  def order_params
+    params.require(:order).permit(:status)
+  end
 
-private
-
-def order_params
-  params.require(:order).permit(:status)
 end

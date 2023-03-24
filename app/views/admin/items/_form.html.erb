@@ -17,7 +17,7 @@
     
     <tr>
       <td><%= f.label :genre_id, 'ジャンル', class: "col-form-label" %></td>
-      <td><%= f.collection_select(:genre_id, Genre.all, :id, :genre_name, {include_blank:"-- 選択してください --"}, {class:"custom-select"}) %></td>
+      <td><%= f.collection_select(:genre_id, *[Genre.all], :id, :genre_name, {include_blank:"-- 選択してください --"}, {class:"custom-select"}) %></td>
     </tr>
     
     <tr>

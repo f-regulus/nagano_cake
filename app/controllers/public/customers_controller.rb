@@ -13,13 +13,8 @@ class Public::CustomersController < ApplicationController
        flash[:notice] = "アップデートいたしました"
       redirect_to customers_mypage_path
     else
-      render customers_mypage_edit_path
+      render :edit
     end
-  end
-
-  def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :kana_first_name,
-    :kana_last_name, :postal_code, :address, :telephone_number, :email )
   end
 
   def unsubscribe
@@ -43,6 +38,13 @@ class Public::CustomersController < ApplicationController
         redirect_to new_customer_registration_path
       end
     end
+  end
+  
+  private
+  
+  def customer_params
+    params.require(:customer).permit(:first_name, :last_name, :kana_first_name,
+    :kana_last_name, :postal_code, :address, :telephone_number, :email )
   end
 
 end
