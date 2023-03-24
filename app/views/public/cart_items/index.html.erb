@@ -19,7 +19,7 @@
       <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
-            <%= image_tag cart_item.item.image, size: '100x80' %>
+            <%= image_tag cart_item.item.image, size: '100x80', style: "background-size: cover; background-position: center;" %>
             <small class="d-inline-block ml-4" style="font-size:16px;"><%= cart_item.item.name %></small>
           </td>
           <td class="align-middle"><%= cart_item.item.with_tax_price %></td>
