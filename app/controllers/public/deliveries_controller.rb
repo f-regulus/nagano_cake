@@ -1,4 +1,6 @@
 class Public::DeliveriesController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @delivery = Delivery.new
     @deliveries = current_customer.delivery.all
@@ -26,7 +28,7 @@ class Public::DeliveriesController < ApplicationController
       flash[:notice] = "アップデートいたしました"
       redirect_to deliveries_path
     else
-      render :index
+      render :edit
     end
   end
 

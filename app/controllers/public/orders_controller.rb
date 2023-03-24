@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   #注文情報入力画面
   def new
     @order = Order.new
@@ -20,9 +22,9 @@ class Public::OrdersController < ApplicationController
 
       # 登録住所 [:address_option]=="1"としてデータをhtmlから受ける
     elsif params[:order][:address_option] == "1"
-      ship = Delivery.find(params[:order][:deliveries_id])
-      #orderのmember_id(=カラム)でアドレス(帳)を選び、そのデータ送る
-      @order.postal_code = ship.post_code
+      ship = Delivery.find(params[:order][:customer_id])
+      #orderのcustomer_id(=カラム)でアドレス(帳)を選び、そのデータ送る
+      @order.postal_code = ship.postcode
       @order.address = ship.address
       @order.name = ship.name
 

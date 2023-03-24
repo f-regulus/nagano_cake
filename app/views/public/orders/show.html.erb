@@ -1,14 +1,16 @@
 <div class='container'>
   <div class='row'>
     <h2 class="text-center w-25 h4 bg-light mt-3">注文履歴詳細</h2>
+  </div>
 
-    <div class='col-12 mt-3'>
+  <div class='row'>
+    <div class='col-7 mt-3'>
       <h2 class="w-25 h4 mt-3">注文情報</h2>
       <table class="table table-bordered">
         <tbody>
           <tr>
             <td class="table-active text-dark">注文日</td>
-            <td><%= @order.created_at %></td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
             <td class="table-active text-dark">配達先</td>
@@ -28,7 +30,7 @@
       </table>
     </div>
 
-    <div class='col-4 mt-3'>
+    <div class='col-5 mt-3'>
       <h2 class="w-25 h4 mt-3">請求情報</h2>
       <table class="table table-bordered">
         <tbody>
@@ -52,28 +54,29 @@
     </div>
   </div>
 
-      <%#= 注文商品%>
-      <h2 class="w-25 h4 mt-3">注文内容</h2>
-      <%#= render "order_product", cart_items: @order_detail, total: @total %>
-        <div class='col-8 mt-3'>
-      <table class="table table-bordered">
-        <tbody>
+  <%#= 注文商品%>
+  <div class='col-8 mt-3'>
+    <h2 class="w-25 h4 mt-3">注文内容</h2>
+    <%#= render "order_product", cart_items: @order_detail, total: @total %>
+
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td class="table-active text-dark">商品名</td>
+          <td class="table-active text-dark">単価(税込み)</td>
+          <td class="table-active text-dark">数量</td>
+          <td class="table-active text-dark">小計</td>
+        </tr>
+        <% @order_details.each do |order_detail| %>
           <tr>
-            <td class="table-active text-dark">商品名</td>
-            <td class="table-active text-dark">単価(税込み)</td>
-            <td class="table-active text-dark">数量</td>
-            <td class="table-active text-dark">小計</td>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.item.with_tax_price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.item.with_tax_price * order_detail.amount %></td>
           </tr>
-          <% @order_details.each do |order_detail| %>
-            <tr>
-              <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.item.price %></td>
-              <td><%= order_detail.amount %></td>
-              <td><%= order_detail.item.price * order_detail.amount %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
 </div>
