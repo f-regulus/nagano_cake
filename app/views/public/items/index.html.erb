@@ -10,7 +10,7 @@
               <%= image_tag item.image, class: "mb-2 d-block w-100", style: "background-size: cover; background-position: center;" %>
             <% end %>
             <p class="mb-2"><%= item.name %></p>
-            <p class="mb-2">￥<%= item.price %></p>
+            <p class="mb-2">￥<%= item.with_tax_price %></p>
           </div>
         <% end %>
       </div>
