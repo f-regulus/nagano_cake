@@ -1,49 +1,11 @@
-<div class="container">
-  
-  <% if result.empty? %>
-    <p>該当の商品はありませんでした。</p>
+<div class="row mt-3">
+  <% result.each do |item| %>
+    <div class="col-3">
+      <%= link_to item_path(item.id) do %>
+        <%= image_tag item.image, class: "mb-2 d-block w-100", style: "background-size: cover; background-position: center;" %>
+      <% end %>
+      <p class="mb-2"><%= item.name %></p>
+      <p class="mb-2">￥<%= item.with_tax_price.to_s %></p>
+    </div>
   <% end %>
-  
-  <div class="row mt-4">
-    <div class="col-10 mx-auto">
-      <h2 class="text-center w-50 h4 bg-light"><%= word %>の検索結果です。<br /><%= result.count %>件ヒットしました。</h2>
-    </div>
-  </div>
-  
-  <div class="row mt-4">
-    <div class="col-11 mx-auto">
-      
-      <table class="table text-center">
-        <thead class="bg-light">
-          <tr>
-            <th>商品ID</th>
-            <th>商品名</th>
-            <th>税抜価格</th>
-            <th>ジャンル</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% result.each do |item| %>
-            <tr>
-              <td><%= item.id %></td>
-              <% if admin_signed_in? %>
-                <td><%= link_to item.name, admin_item_path(item), class: "link-dark" %></td>
-              <% else %>
-                <td><%= link_to item.name, item_path(item), class: "link-dark" %></td>
-              <% end %>
-              <td><%= item.price %></td>
-              <td><%= item.genre.genre_name %></td>
-                <% if item.is_active == false %>
-              <td class="text-success">販売中</td>
-                <% else item.is_active == true %>
-              <td>販売停止中</td>
-                <% end %>
-              </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
 </div>

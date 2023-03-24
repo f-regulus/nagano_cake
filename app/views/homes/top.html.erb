@@ -19,7 +19,7 @@
                 <%= image_tag item.image, size: '180x100', class: "mb-2 d-block", style: "background-size: cover; background-position: center;" %>
               <% end %>
               <p class="mb-2"><%= item.name %></p>
-              <p class="mb-2">￥<%= item.price %></p>
+              <p class="mb-2">￥<%= item.with_tax_price.to_s %></p>
             </div>
           <% end %>
         </div>

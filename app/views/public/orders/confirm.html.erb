@@ -8,7 +8,7 @@
   <div class='row'>
     <%#= 注文商品%>
     <%#= render "order_product", cart_items: @cart_items %>
-        <div class='col-8 mt-3'>
+    <div class='col-8 mt-3'>
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -55,12 +55,12 @@
   <div class='row mt-3'>
     <strong class="mr-4 h5">支払方法</strong><%= @order.payment %>
   </div>
-      <div class='row mt-3'>
-        <strong class="mr-4 h5">お届け先</strong>
-        <span class="mr-2"><%= @order.postal_code %></span>
-        <span class="mr-2"><%= @order.address %></span>
-        <span class="mr-2"><%= @order.name %></span>
-      </div>
+    <div class='row mt-3'>
+      <strong class="mr-4 h5">お届け先</strong>
+      <span class="mr-2"><%= @order.postal_code %></span>
+      <span class="mr-2"><%= @order.address %></span>
+      <span class="mr-2"><%= @order.name %></span>
+    </div>
 
   <%= form_with model: @order do |f| %>
     <%= f.hidden_field :customer_id %>
