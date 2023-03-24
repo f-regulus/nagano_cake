@@ -41,29 +41,26 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.postage = 800
     @order.save
-      #カート情報
-      @cart_item = current_customer.cart_items.all
-      @cart_item.each do |cart_item| #カートの商品を1つずつ取り出しループ
-        @order_details = OrderDetail.new #初期化宣言
-        @order_details.item_id = cart_item.item_id #商品idを注文商品idに代入
-        @order_details.amount = cart_item.amount #商品の個数を注文商品の個数に代入
-        @order_details.price = @order.billing_amount #請求金額に代入billing_amount
-        @order_details.order_id = @order.id #注文商品に注文idを紐付け
-        @order_details.save #注文商品を保存
-      end
+    #カート情報
+    @cart_item = current_customer.cart_items.all
+    @cart_item.each do |cart_item| #カートの商品を1つずつ取り出しループ
+    @order_details = OrderDetail.new #初期化宣言
+    @order_details.item_id = cart_item.item_id #商品idを注文商品idに代入
+    @order_details.amount = cart_item.amount #商品の個数を注文商品の個数に代入
+    @order_details.price = @order.billing_amount #請求金額に代入billing_amount
+    @order_details.order_id = @order.id #注文商品に注文idを紐付け
+    @order_details.save #注文商品を保存
+  end
 
-      #カートの中身を削除
-      current_customer.cart_items.destroy_all
-      redirect_to orders_success_path
-
+    #カートの中身を削除
+    current_customer.cart_items.destroy_all
+    redirect_to orders_success_path
   end
 
   def show
     @order = current_customer.orders.find(params[:id])
-    @order_detail = @order.order_details
-    @cart_items = current_customer.cart_items
+    @order_details = @order.order_details
   end
 
   # 注文完了画面
@@ -71,7 +68,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order_details = OrderDetails.all
+    @orders = current_customer.orders
   end
 
   private
