@@ -7,19 +7,18 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details
+    @order_details = @order.order_details.all
   end
 
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
     @order_details = @order.order_details
-    if @order.status == "入金確認"
-       @order_details.each do |order_detail|
-        order_detail.make_status = "製作待ち"
-        order_detail.save
-      end
-    end
+    #   @order_details.each do |order_detail|
+    #    order_detail.making_status = "製作待ち"
+    #    order_detail.save
+    #  end
+    #end
     redirect_to admin_order_path
   end
 
