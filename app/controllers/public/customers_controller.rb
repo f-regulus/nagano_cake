@@ -29,7 +29,7 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
-    redirect_to new_customer_registration_path
+    redirect_to root_path
   end
 
   #退会した顧客は同じemailでログインできなくなる
