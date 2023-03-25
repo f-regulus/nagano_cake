@@ -13,7 +13,6 @@
         <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
           <%= render :partial => 'form', :locals => {:f => f, :edit_flag => true} %>
         <% end %>
-        <%= link_to '削除する', admin_genre_path(@genre.id), method: :delete %>
       </div>
     </div>
   </div>

@@ -5,17 +5,18 @@ Rails.application.routes.draw do
     resources :customers, only: [:index,:show,:edit,:update]
     resources :orders, only:[:index,:show,:update]
     resources :order_details,only:[:update]
+
     resources :items
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
   end
 
   root to: 'homes#top'
+  get 'about' => "homes#about"
+
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
-  get 'about' => "homes#about"
 
   scope module: :public do
     get 'customers/mypage' => 'customers#show'
@@ -36,12 +37,8 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  namespace :admin do
-  end
-
   get '/search', to: 'searches#search'
   get '/genre_search', to: 'searches#genre_search'
-
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

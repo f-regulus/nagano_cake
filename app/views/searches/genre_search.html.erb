@@ -1,1 +1,9 @@
-<%= render 'result', word: @word, result: @result %>
+<div class="container">
+  <div class="row">
+    <%= render 'public/items/genres', genres: @genres %>
+    <div class="col-9">
+      <h3><strong><%= @word %>一覧</strong>(全<%= @result.count %>件)</h3>
+      <%= render 'result', result: @result %>
+    </div>
+  </div>
+</div>

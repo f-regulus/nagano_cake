@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope.is_a?(Admin)
         admin_root_path
     else
-        customers_mypage_path
+        root_path
     end
   end
   
@@ -18,10 +18,6 @@ class ApplicationController < ActionController::Base
     else
         root_path
     end
-  end
-
-  def after_sign_in_path_for(resource)
-    root_path(resource)
   end
 
   def configure_permitted_parameters

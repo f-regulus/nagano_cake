@@ -1,3 +1,4 @@
+
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
 
@@ -7,6 +8,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def update
@@ -15,7 +17,7 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
     if @order.status == "入金確認"
        @order_details.each do |order_detail|
-        order_detail.make_status = "製作待ち"
+        order_detail.making_status = "製作待ち"
         order_detail.save
       end
     end

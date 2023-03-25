@@ -4,7 +4,7 @@
         <h2 class="text-center bg-light h4 col-3">会員一覧</h2>
       </div>
     </div>
-    
+
   <div class="row mt-4">
     <div class="col-11 mx-auto">
       <table class="table">
@@ -23,7 +23,7 @@
               <td><%= link_to customer.full_name,admin_customer_path(customer) %></td>
               <td><%= customer.email %></td>
                 <% if customer.is_deleted %>
-                  <td>退会</td>
+                  <td>退会済み</td>
                 <% else %>
                   <td class="text-success">有効</td>
                 <% end %>
@@ -33,4 +33,6 @@
        </table>
      </div>
    </div>
+     <div class="d-flex justify-content-center">
+     <div><%= paginate @customers %></div>
 </div>
