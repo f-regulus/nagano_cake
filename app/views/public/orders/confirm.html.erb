@@ -20,9 +20,9 @@
             <tr>
               <td><%= image_tag cart_item.item.image, size: '60x40' %>
                 <%= cart_item.item.name %></td>
-              <td class="align-middle"><%= cart_item.item.with_tax_price %></td>
+              <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
               <td class="align-middle"><%= cart_item.amount %></td>
-              <td class="align-middle"><%= cart_item.subtotal %></td>
+              <td class="align-middle"><%= cart_item.subtotal.to_s(:delimited) %></td>
               <% @total += cart_item.subtotal %>
             </tr>
           <% end %>
@@ -36,16 +36,18 @@
           <tr>
             <td class="table-active text-dark">送料</td>
             <td><% @order.postage = 800 %>
-              <%= @order.postage %></td>
+              <%= @order.postage.to_s(:delimited) %>
+            </td>
           </tr>
           <tr>
             <td class="table-active text-dark">商品合計</td>
-            <td><%= @total %></td>
+            <td><%= @total.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td class="table-active text-dark">請求金額</td>
             <td><% @order.billing_amount = @order.postage + @total %>
-              <%= @order.billing_amount %></td>
+              <%= @order.billing_amount.to_s(:delimited) %>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -55,13 +57,12 @@
     <strong class="mr-4 h5">支払方法</strong><%= @order.payment %>
   </div>
 
-      <div class='row mt-3'>
-        <strong class="mr-4 h5">お届け先</strong>
-        <span class="mr-2">〒<%= @order.postal_code %></span>
-        <span class="mr-2"><%= @order.address %></span>
-        <span class="mr-2"><%= @order.name %></span>
-      </div>
-
+  <div class='row mt-3'>
+    <strong class="mr-4 h5">お届け先</strong>
+    <span class="mr-2">〒<%= @order.postal_code %></span>
+    <span class="mr-2"><%= @order.address %></span>
+    <span class="mr-2"><%= @order.name %></span>
+  </div>
 
   <%= form_with model: @order do |f| %>
     <%= f.hidden_field :customer_id %>
