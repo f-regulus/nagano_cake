@@ -34,15 +34,6 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
-  
-  def destroy
-    if @item.destroy
-      flash[:notice] = '該当の商品を削除しました'
-      redirect_to admin_items_path
-    else
-      render :show
-    end
-  end
 
   private
 
