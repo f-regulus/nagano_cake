@@ -39,7 +39,7 @@
             <td class="table-active text-dark" style="width: 30%">商品合計</td>
             <td style="width: 30%"><% @order.billing_amount %>
               <% total = @order.billing_amount - @order.postage %>
-              <%= total.to_s(:delimited) %>]
+              <%= total.to_s(:delimited) %>
             </td>
           </tr>
           <tr>
