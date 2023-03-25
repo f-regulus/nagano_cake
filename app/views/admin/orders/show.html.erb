@@ -15,11 +15,11 @@
           </tr>
           <tr>
             <td>注文日</td>
-            <td><%= @order.created_at.to_s(:datemime_jp) %></td>
+            <td><%= @order.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
           </tr>
           <tr>
             <td>配送先</td>
-            <td><%= @order.customer.postal_code %>
+            <td>〒<%= @order.customer.postal_code %>
                 <%= @order.customer.address %>
             </td>
           </tr>
@@ -32,8 +32,8 @@
           <%= form_with model:@order, url: admin_order_path, class: "d-inline-block" do |f| %>
           <tr>
             <td><%= f.label :status, '注文ステータス'%></td>
-              <td><%= f.select(:status, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"], {}, {class: "custom-select"}) %></td>
-              <td><%= f.submit "更新", class: 'btn btn-primary ms-2' %></td>
+            <td><%= f.select(:status, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"], {}, {class: "custom-select"}) %></td>
+            <td><%= f.submit "更新", class: 'btn btn-success ms-2' %></td>
           </tr>
           <% end %>
         </tbody>
@@ -59,12 +59,12 @@
         <tbody>
           <tr>
             <td><%= order_detail.item.name %></td>
-            <td>¥<%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
+            <td>¥<%= (order_detail.item.price*1.1).floor.to_s(:delimited) %></td>
             <td><%= order_detail.amount %></td>
-            <td>¥<%= ((order_detail.price * order_detail.amount*1.1).floor).to_s(:delimited) %></td>
+            <td>¥<%= ((order_detail.item.price * order_detail.amount*1.1).floor).to_s(:delimited) %></td>
             <%= form_with model:order_detail, url: admin_order_detail_path(order_detail),method: :patch, class: "d-inline-block" do |f| %>
               <td><%= f.select(:making_status, ["着手不可", "製作待ち", "製作中", "製作完了"], {}, { class: "custom-select d-inline" } ) %></td>
-              <td><%= f.submit "更新", class: 'btn btn-primary ms-2 d-inline' %></td>
+              <td><%= f.submit "更新", class: 'btn btn-success ms-2 d-inline' %></td>
             <% end %>
           </tr>
         </tbody>
