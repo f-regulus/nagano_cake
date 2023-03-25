@@ -7,7 +7,7 @@
   </div>
 
   <div class="row mt-4">
-    <div class="col-8 mx-auto">
+    <div class="col-10">
       <table class="table table-borderless">
         <thead>
           <tr class="table-active text-dark">
@@ -30,11 +30,13 @@
               <td><%= order.status %></td>
             </tr>
           <% end %>
-          </tbody>
-        </table>
-      </div>
+        </tbody>
+      </table>
     </div>
-     <div class="d-flex justify-content-center">
-     <div><%= paginate @orders %></div>
+  
+    <div class="d-flex justify-content-center">
+      <div><%= paginate @orders %></div>
+    </div>
   </div>
+  
 </div>
