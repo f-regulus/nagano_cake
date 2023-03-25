@@ -12,7 +12,7 @@ class Admin::OrderDetailsController < ApplicationController
        @order.status = "製作中"
        @order.save
     end
-
+        #全て制作完了になったら、発送準備中に更新
     if @order.order_details.count == @order_details.where(making_status: "製作完了").count
         @order.status = "発送準備中"
         @order.save
