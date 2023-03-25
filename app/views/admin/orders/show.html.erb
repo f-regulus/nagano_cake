@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="text-center bg-light h4 col-3">注文履歴詳細</h2>
-
+  
   <div class="row">
     <div class="col-md-8">
       <table class="table table-borderless">
@@ -72,7 +72,7 @@
         <% end %>
       </table>
     </div>
-
+  
    <!--注文商品の合計金額表示-->
     <table class="table col-4 table-borderless">
       <tbody>
@@ -81,12 +81,12 @@
           <td>¥<%= (@order.billing_amount - @order.postage).to_s(:delimited) %></td>
         </tr>
 
-
+  
         <tr>
           <td><strong>送料</strong></td>
           <td>¥<%= @order.postage %></td>
         </tr>
-
+    
         <tr>
           <td><strong>請求金額合計</strong></td>
           <td>¥<%= @order.billing_amount.to_s(:delimited) %></td>
