@@ -27,16 +27,15 @@
           <tr>
             <td>支払い方法</td>
             <td>
-              <%= @order.payment %>
-            </td>
+              <%= form_with model:@order, url: admin_order_path, class: "d-inline-block" do |f| %>
+                <div class="form-inline">
+                   <%= f.select(:status, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"], {}, { class: "custom-select mr-2"}) %>
+                   <%= f.submit "更新", class: 'btn btn-success' %>
+                </div>
+               <% end %>
+            </td>  
           </tr>
-          <%= form_with model:@order, url: admin_order_path, class: "d-inline-block" do |f| %>
-          <tr>
-            <td><%= f.label :status, '注文ステータス'%></td>
-            <td><%= f.select(:status, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"], {}, {class: "custom-select"}) %></td>
-            <td><%= f.submit "更新", class: 'btn btn-success ms-2' %></td>
-          </tr>
-          <% end %>
+
         </tbody>
       </table>
     </div>
@@ -63,10 +62,14 @@
             <td>¥<%= (order_detail.item.price*1.1).floor.to_s(:delimited) %></td>
             <td><%= order_detail.amount %></td>
             <td>¥<%= ((order_detail.item.price * order_detail.amount*1.1).floor).to_s(:delimited) %></td>
-            <%= form_with model:order_detail, url: admin_order_detail_path(order_detail),method: :patch, class: "d-inline-block" do |f| %>
-              <td><%= f.select(:making_status, ["着手不可", "製作待ち", "製作中", "製作完了"], {}, { class: "custom-select d-inline" } ) %></td>
-              <td><%= f.submit "更新", class: 'btn btn-success ms-2 d-inline' %></td>
-            <% end %>
+            <td>
+              <%= form_with model:order_detail, url: admin_order_detail_path(order_detail),method: :patch do |f| %>
+                <div class="form-inline">
+                  <%= f.select(:making_status, ["着手不可", "製作待ち", "製作中", "製作完了"], {}, { class: "custom-select mr-3" } ) %>
+                  <%= f.submit "更新", class: 'btn btn-success ms-2 d-inline' %>
+                </div>
+              <% end %>
+            </td>
           </tr>
         </tbody>
         <% end %>
