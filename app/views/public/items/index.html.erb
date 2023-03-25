@@ -10,7 +10,7 @@
               <%= image_tag item.image, size: '150x120', class: "mb-2 d-block w-100", style: "background-size: cover; background-position: center;" %>
             <% end %>
             <p class="mb-2"><%= item.name %></p>
-            <p class="mb-2">￥<%= item.with_tax_price %></p>
+            <p class="mb-2">￥<%= item.with_tax_price.to_s(:delimited) %></p>
           </div>
         <% end %>
       </div>
