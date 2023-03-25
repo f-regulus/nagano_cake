@@ -30,15 +30,6 @@ class Admin::GenresController < ApplicationController
     end
   end
   
-  def destroy
-    if @genre.destroy
-      flash[:notice] = '該当のジャンルを削除しました'
-      redirect_to admin_genres_path
-    else
-      render :edit
-    end
-  end
-  
   private
   def edit_genre
     @genre = Genre.find_by(id: params[:id])
