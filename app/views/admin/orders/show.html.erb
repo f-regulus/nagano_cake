@@ -3,7 +3,7 @@
   
   <div class="row">
     <div class="col-md-8">
-      <table class="table">
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <td>購入者</td>
@@ -16,6 +16,7 @@
           <tr>
             <td>注文日</td>
             <td><%= @order.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
+            <td></td>
           </tr>
           <tr>
             <td>配送先</td>
