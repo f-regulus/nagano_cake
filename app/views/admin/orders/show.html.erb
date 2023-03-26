@@ -7,11 +7,7 @@
         <tbody>
           <tr>
             <td>購入者</td>
-            <td>
-              <%= link_to admin_order_path(@order), class: "text-primary" do %>
-                <%= @order.customer.full_name %>
-              <% end %>
-            </td>
+            <td><%= @order.customer.full_name %></td>
           </tr>
           <tr>
             <td>注文日</td>
@@ -23,6 +19,10 @@
             <td>〒<%= @order.customer.postal_code %>
                 <%= @order.customer.address %>
             </td>
+          </tr>
+          <tr>
+            <td>支払方法</td>
+            <td><%= @order.payment %></td>
           </tr>
           <tr>
             <td>支払い方法</td>
